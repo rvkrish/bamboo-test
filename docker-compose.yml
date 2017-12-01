@@ -5,19 +5,10 @@ volumes:
 services:
   db:
     image: postgres:9.6
-    restart: always
-    environment:
-      LC_ALL: C.UTF-8
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 
-      POSTGRES_DB: docker_app_development
-
   web:
     build: .
     command: Xvfb :99 -screen 0 1280x1024x24
     command: bundle exec rails s -p 3001 -b '0.0.0.0'
-    env_file: 
-      - docker.env
 
     volumes:
       - .:/myapp
